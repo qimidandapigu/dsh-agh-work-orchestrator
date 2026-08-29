@@ -36,9 +36,12 @@ nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
 
 const demoButton = document.querySelector('#play-demo')
 const whipDemo = document.querySelector('#whip-demo')
+const heroWhipDemo = document.querySelector('#hero-whip-demo')
 const demoSignals = [...document.querySelectorAll('.demo-signal')]
 const flowCards = [...document.querySelectorAll('.flow-card')]
 const gameStage = document.querySelector('.game-stage')
+const heroVisual = document.querySelector('.hero-visual')
+const heroAction = document.querySelector('.image-note')
 const actionTitle = document.querySelector('.stage-action b')
 const actionHint = document.querySelector('.stage-action small')
 let demoTimer
@@ -50,16 +53,20 @@ const clearDemo = () => {
   demoSignals.forEach(signal => signal.classList.remove('active'))
   flowCards.forEach(card => card.classList.remove('is-active'))
   gameStage?.classList.remove('is-whipped')
+  heroVisual?.classList.remove('is-whipped')
   demoButton.textContent = '演示语音 + 小皮鞭'
+  heroAction.textContent = '点击小皮鞭，催 NPC 干活'
   actionTitle.textContent = '点击挥动小皮鞭'
   actionHint.textContent = '抽一下，看看 NPC 的反应'
 }
 
-const runDemo = () => {
+const runDemo = ({ scroll = true } = {}) => {
   clearDemo()
-  document.querySelector('#demo').scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' })
+  if (scroll) document.querySelector('#demo').scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' })
   demoButton.textContent = 'NPC 被催办中…'
   gameStage?.classList.add('is-whipped')
+  heroVisual?.classList.add('is-whipped')
+  heroAction.textContent = '啪！AI NPC：马上就好了！'
   demoSignals[1]?.classList.add('active')
   flowCards[1]?.classList.add('is-active')
   actionTitle.textContent = '啪！NPC：马上就好了！'
@@ -75,5 +82,6 @@ const runDemo = () => {
   demoTimer = window.setTimeout(clearDemo, 5000)
 }
 
-demoButton.addEventListener('click', runDemo)
-whipDemo.addEventListener('click', runDemo)
+demoButton.addEventListener('click', () => runDemo({ scroll: true }))
+whipDemo.addEventListener('click', () => runDemo({ scroll: false }))
+heroWhipDemo.addEventListener('click', () => runDemo({ scroll: false }))

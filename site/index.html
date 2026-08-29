@@ -52,15 +52,18 @@
           <a class="button button-primary" href="#how">看它怎么工作 <span aria-hidden="true">↓</span></a>
           <button class="button button-ghost" id="play-demo" type="button">演示语音 + 小皮鞭</button>
         </div>
-        <p class="hero-version">DSH AGH WORK ORCHESTRATOR · VERSION 0.1.5</p>
+        <p class="hero-version">DSH AGH WORK ORCHESTRATOR · VERSION 0.1.6</p>
       </div>
 
       <figure class="hero-visual reveal">
-        <div class="image-frame">
-          <img src="./assets/npc-work-hero.png" width="1675" height="942" alt="像素农场游戏中，玩家通过语音询问 PPT 进度，NPC 抱着文档回答马上就好">
+        <button class="image-frame" id="hero-whip-demo" type="button" aria-label="点击挥动小皮鞭，查看 AI NPC 的反应">
+          <img class="hero-frame hero-before" src="./assets/voice-whip-before.png" width="1675" height="942" alt="挥鞭前，左侧玩家手持盘起的小皮鞭，右侧 AI NPC 小汤圆平静地整理汇报">
+          <img class="hero-frame hero-after" src="./assets/npc-work-hero.png" width="1675" height="942" alt="左侧玩家挥动小皮鞭后，右侧 AI NPC 小汤圆惊讶地回答马上就好">
           <span class="live-pill"><i></i> 游戏内实时协作</span>
-          <span class="image-note">语音 + 小皮鞭，催 NPC 干活</span>
-        </div>
+          <span class="actor-label actor-player">玩家 →</span>
+          <span class="actor-label actor-npc">← AI NPC · 小汤圆</span>
+          <span class="image-note">点击小皮鞭，催 NPC 干活</span>
+        </button>
         <figcaption>产品概念演示画面 · 玩家不离开游戏，也能持续指挥工作</figcaption>
       </figure>
     </section>
@@ -148,6 +151,8 @@
           <img class="demo-frame demo-after" src="./assets/voice-whip-demo.png" width="1675" height="942" alt="玩家挥动小皮鞭催办后，NPC 惊讶地回答马上就好">
           <span class="stage-mode">实机交互 · 语音 + 小皮鞭</span>
           <span class="stage-session"><i></i> 小汤圆正在后台干活</span>
+          <span class="actor-label actor-player">玩家 →</span>
+          <span class="actor-label actor-npc">← AI NPC · 小汤圆</span>
           <span class="stage-action" id="whip-instruction"><b>点击挥动小皮鞭</b><small>抽一下，看看 NPC 的反应</small></span>
         </button>
         <div class="game-controls" aria-live="polite">

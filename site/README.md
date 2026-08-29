@@ -6,7 +6,7 @@
 
 产品生态区展示 DSH 作为工作底座、Claude Code/Codex 官方 Provider 的可配置接入，以及面向星露谷物语、缺氧、饥荒联机版的多游戏 Adapter 结构。外部生产力工具必须实际安装并启用；新增游戏也必须实现自己的 Adapter。
 
-小皮鞭演示默认使用 `assets/voice-whip-before.png`；点击游戏画面后切到 `assets/voice-whip-demo.png`，5 秒后复位。腾讯办公工具使用正式名称 `WorkBuddy`，当前状态仍是待接入。
+小皮鞭演示默认使用 `assets/voice-whip-before.png`，鞭子完整盘在玩家手中；点击首页大图或下方游戏画面后切到 `assets/voice-whip-demo.png`，5 秒后复位。两处画面都标注左侧玩家与右侧 AI NPC 小汤圆。腾讯办公工具使用正式名称 `WorkBuddy`，当前状态仍是待接入。
 
 直接双击 `index.html` 即可浏览；也可以在仓库根目录启动本地服务器：
 

@@ -254,10 +254,21 @@ h1 em, .final-cta h2 em {
 
 .image-frame {
   position: relative;
+  width: 100%;
   padding: 9px;
+  display: block;
+  appearance: none;
   background: var(--ink);
+  border: 0;
   box-shadow: var(--shadow);
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease;
 }
+
+.image-frame:hover { transform: translateY(-3px); box-shadow: 15px 17px 0 var(--ink); }
+.image-frame:focus-visible { outline: 3px solid var(--orange); outline-offset: 7px; }
 
 .image-frame::before,
 .image-frame::after {
@@ -272,7 +283,11 @@ h1 em, .final-cta h2 em {
 .image-frame::before { top: -8px; left: -8px; }
 .image-frame::after { right: -8px; bottom: -8px; }
 
-.image-frame img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; image-rendering: pixelated; }
+.hero-frame { width: 100%; height: auto; display: block; aspect-ratio: 16 / 9; object-fit: cover; image-rendering: pixelated; transition: opacity .16s ease; }
+.hero-after { position: absolute; top: 9px; left: 9px; width: calc(100% - 18px); opacity: 0; }
+.hero-visual.is-whipped .hero-before { opacity: 0; }
+.hero-visual.is-whipped .hero-after { opacity: 1; }
+.hero-visual.is-whipped .image-frame { animation: stage-nudge .42s ease 2; }
 
 .live-pill, .image-note {
   position: absolute;
@@ -301,6 +316,23 @@ h1 em, .final-cta h2 em {
   background: var(--lime);
   transform: rotate(-2deg);
 }
+
+.actor-label {
+  position: absolute;
+  z-index: 4;
+  top: 49%;
+  padding: 7px 9px;
+  background: var(--ink);
+  color: var(--paper);
+  border: 1px solid var(--lime);
+  font-size: 10px;
+  font-weight: 950;
+  box-shadow: 3px 3px 0 var(--lime);
+  pointer-events: none;
+}
+
+.actor-player { left: 18px; }
+.actor-npc { right: 18px; }
 
 .hero-visual figcaption { margin-top: 16px; color: var(--muted); font-size: 11px; text-align: right; }
 
@@ -618,6 +650,9 @@ footer span, footer p { margin: 0; font: 10px Consolas, monospace; letter-spacin
   .vote-ticket strong, .vote-ticket b { font-size: 25px; }
   .image-note { right: 12px; bottom: 12px; }
   .live-pill { top: 12px; left: 12px; }
+  .actor-label { top: 48%; padding: 5px 6px; font-size: 8px; }
+  .actor-player { left: 12px; }
+  .actor-npc { right: 12px; }
   .section { padding: 84px 20px; }
   .manifesto-grid, .not-grid, .section-heading { grid-template-columns: 1fr; gap: 42px; }
   .flow { grid-template-columns: 1fr; }
