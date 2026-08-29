@@ -12,6 +12,10 @@
 
 ![玩家在游戏里通过语音催 NPC 完成 PPT](site/assets/npc-work-hero.png)
 
+- 公网体验：[https://qimidandapigu.github.io/dsh-agh-work-orchestrator/](https://qimidandapigu.github.io/dsh-agh-work-orchestrator/)
+- 本地 HTML：[site/index.html](site/index.html)
+- 本地预览：`http://127.0.0.1:4173/?version=0.1.7`
+
 - 参赛人员：**小汤圆**
 - 小组：**回家玩游戏！！**
 
@@ -29,7 +33,11 @@
 python -m http.server 4173 --directory site
 ```
 
+`main` 分支中的 `site/` 发生变化后，[GitHub Pages 工作流](.github/workflows/pages.yml)会自动发布公网版本。首次打开时需要下载多张高分辨率演示图，加载可能需要几秒。
+
 产品定位、用户旅程和事实依据见 [docs/PRODUCT_VISION.md](docs/PRODUCT_VISION.md)。
+
+Vibe Hacks #05 表单可复制内容和截图清单见 [docs/VIBE_HACKS_05_SUBMISSION.md](docs/VIBE_HACKS_05_SUBMISSION.md)。
 
 ## 为什么单独建仓库
 
