@@ -31,7 +31,6 @@
     <nav id="site-nav" aria-label="主导航">
       <a href="#vision">愿景</a>
       <a href="#how">怎么工作</a>
-      <a href="#proof">依据</a>
       <a href="#ecosystem">工具与游戏</a>
       <a href="#team">参赛信息</a>
       <a class="nav-cta" href="https://github.com/qimidandapigu/dsh-agh-work-orchestrator" target="_blank" rel="noreferrer">GitHub ↗</a>
@@ -53,7 +52,7 @@
           <a class="button button-primary" href="#how">看它怎么工作 <span aria-hidden="true">↓</span></a>
           <button class="button button-ghost" id="play-demo" type="button">演示语音 + 小皮鞭</button>
         </div>
-        <p class="hero-version">DSH AGH WORK ORCHESTRATOR · VERSION 0.1.4</p>
+        <p class="hero-version">DSH AGH WORK ORCHESTRATOR · VERSION 0.1.5</p>
       </div>
 
       <figure class="hero-visual reveal">
@@ -144,13 +143,15 @@
       </div>
 
       <div class="game-stage reveal" aria-label="玩家在游戏里使用语音和小皮鞭催 NPC 工作的演示">
-        <div class="game-window">
-          <img src="./assets/voice-whip-demo.png" width="1675" height="942" alt="像素农场游戏中，玩家手持小皮鞭并通过麦克风询问 PPT 进度，NPC 以头顶气泡回答马上就好">
+        <button class="game-window" id="whip-demo" type="button" aria-describedby="whip-instruction">
+          <img class="demo-frame demo-before" src="./assets/voice-whip-before.png" width="1675" height="942" alt="挥动小皮鞭之前，玩家和正在整理汇报的 NPC 平静站在农场河边">
+          <img class="demo-frame demo-after" src="./assets/voice-whip-demo.png" width="1675" height="942" alt="玩家挥动小皮鞭催办后，NPC 惊讶地回答马上就好">
           <span class="stage-mode">实机交互 · 语音 + 小皮鞭</span>
           <span class="stage-session"><i></i> 小汤圆正在后台干活</span>
-        </div>
+          <span class="stage-action" id="whip-instruction"><b>点击挥动小皮鞭</b><small>抽一下，看看 NPC 的反应</small></span>
+        </button>
         <div class="game-controls" aria-live="polite">
-          <div class="demo-signal active"><span>🎙</span><b>按住说话</b><small>“PPT 做好了没？”</small></div>
+          <div class="demo-signal"><span>🎙</span><b>按住说话</b><small>“PPT 做好了没？”</small></div>
           <div class="demo-signal"><span class="whip-symbol">〰</span><b>小皮鞭催办</b><small>游戏动作，不是打字</small></div>
           <div class="demo-signal"><span>!</span><b>NPC 主动汇报</b><small>语音 + 头顶气泡</small></div>
         </div>
@@ -158,41 +159,10 @@
       </div>
     </section>
 
-    <section class="proof section" id="proof">
-      <div class="section-heading reveal">
-        <div>
-          <div class="section-label">04 / 不是空想，底座已经存在</div>
-          <h2>把成熟能力，<br>串成新的生活方式。</h2>
-        </div>
-        <p>我们的创新不是再造一套任务系统，而是把 DSH 已有的持久 Session、Workspace 与 Agent 能力连接进游戏体验。</p>
-      </div>
-
-      <div class="proof-grid">
-        <a class="proof-card reveal" href="https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/session/README.md" target="_blank" rel="noreferrer">
-          <span class="proof-number">01</span>
-          <h3>Session 可持续</h3>
-          <p>DSH 官方把 Session 定义为可持久、可恢复的数据平面。工作对话离开当前实时循环后仍能继续。</p>
-          <b>查看 DSH Session 文档 ↗</b>
-        </a>
-        <a class="proof-card reveal" href="https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/client/ui-workspace/README.md" target="_blank" rel="noreferrer">
-          <span class="proof-number">02</span>
-          <h3>成果有地方落</h3>
-          <p>Workspace 与 Session 列表已是 DSH 产品能力。玩家想看完整记录时，可以直接打开对应工作会话。</p>
-          <b>查看 Workspace UI 文档 ↗</b>
-        </a>
-        <a class="proof-card proof-stat reveal" href="https://www.nber.org/papers/w31161" target="_blank" rel="noreferrer">
-          <span class="stat">+14%</span>
-          <h3>AI 协作确实能提升产出</h3>
-          <p>NBER 对 5,179 名客服人员的研究中，生成式 AI 助手使每小时解决问题数平均提高 14%。这是特定场景证据，不代表所有职业。</p>
-          <b>查看原始研究 ↗</b>
-        </a>
-      </div>
-    </section>
-
     <section class="ecosystem section" id="ecosystem">
       <div class="section-heading reveal">
         <div>
-          <div class="section-label">05 / 成熟工具自动接力</div>
+          <div class="section-label">04 / 成熟工具自动接力</div>
           <h2>一个 NPC 工作伙伴，<br>调用一整套生产力。</h2>
         </div>
         <p>NPC 根据任务选择已安装能力。DSH 在底层保持长期上下文；代码、研究和复杂文件工作可以继续交给成熟工具。</p>
@@ -221,11 +191,11 @@
             <div><small>官方 Subagent Provider</small><h3>Codex</h3><p>安装并启用后，可在同一 Workspace 完成复杂开发。</p></div>
             <b>可配置</b>
           </a>
-          <div class="tool-card tool-open">
+          <a class="tool-card tool-open" href="https://cloud.tencent.com.cn/product/workbuddy" target="_blank" rel="noreferrer">
             <span class="tool-mark">WB</span>
-            <div><small>开放扩展位</small><h3>Workbode</h3><p>按产品需求保留标准接入位，具体协议待确认。</p></div>
+            <div><small>腾讯全场景 AI 办公工作台</small><h3>WorkBuddy</h3><p>支持文档、表格、设计和本地文件工作，接入前需安装与授权。</p></div>
             <b>待接入</b>
-          </div>
+          </a>
         </div>
       </div>
 
@@ -256,7 +226,7 @@
     </section>
 
     <section class="not-list section">
-      <div class="section-label reveal">06 / 我们刻意没有做</div>
+      <div class="section-label reveal">05 / 我们刻意没有做</div>
       <div class="not-grid">
         <h2 class="reveal">薄薄一层协调，<br>不造第二个世界。</h2>
         <div class="cross-list reveal">

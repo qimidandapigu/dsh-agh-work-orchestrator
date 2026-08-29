@@ -418,15 +418,26 @@ h1 em, .final-cta h2 em {
 
 .game-window {
   position: relative;
+  width: 100%;
   padding: 8px;
+  display: block;
+  appearance: none;
   background: var(--paper);
   border: 1px solid rgba(255,255,255,.38);
   box-shadow: 18px 20px 0 var(--lime), 0 40px 90px rgba(0,0,0,.34);
-  transition: transform .18s ease;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease;
 }
 
-.game-window img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; image-rendering: pixelated; }
-.game-stage.is-playing .game-window { animation: stage-nudge .42s ease 2; }
+.game-window:hover { box-shadow: 22px 24px 0 var(--lime), 0 44px 100px rgba(0,0,0,.4); }
+.game-window:focus-visible { outline: 3px solid var(--lime); outline-offset: 7px; }
+.demo-frame { width: 100%; height: auto; display: block; aspect-ratio: 16 / 9; object-fit: cover; image-rendering: pixelated; transition: opacity .16s ease; }
+.demo-after { position: absolute; top: 8px; left: 8px; width: calc(100% - 16px); opacity: 0; }
+.game-stage.is-whipped .demo-before { opacity: 0; }
+.game-stage.is-whipped .demo-after { opacity: 1; }
+.game-stage.is-whipped .game-window { animation: stage-nudge .42s ease 2; }
 
 .stage-mode,
 .stage-session {
@@ -443,6 +454,10 @@ h1 em, .final-cta h2 em {
 .stage-mode { top: 20px; left: 20px; }
 .stage-session { left: 20px; bottom: 20px; display: flex; align-items: center; gap: 8px; }
 .stage-session i { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); animation: pulse 1.2s infinite; }
+.stage-action { position: absolute; right: 20px; bottom: 20px; max-width: 240px; padding: 10px 12px; display: grid; gap: 3px; background: var(--lime); color: var(--ink); border: 1px solid var(--ink); box-shadow: 5px 5px 0 var(--orange); text-align: left; }
+.stage-action b { font-size: 12px; }
+.stage-action small { font-size: 9px; }
+.game-stage.is-whipped .stage-action { background: var(--orange); color: var(--paper); box-shadow: 5px 5px 0 var(--lime); }
 
 .game-controls { margin-top: 28px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
 .demo-signal { min-height: 96px; padding: 14px; display: grid; grid-template-columns: 32px 1fr; align-content: center; gap: 2px 9px; border: 1px solid rgba(255,255,255,.22); color: #8d9b94; transition: color .2s ease, border-color .2s ease, background .2s ease, transform .2s ease; }
@@ -455,18 +470,6 @@ h1 em, .final-cta h2 em {
 
 @keyframes pulse { 50% { opacity: .28; } }
 @keyframes stage-nudge { 50% { transform: translate(5px, -3px) rotate(-.3deg); } }
-
-.proof { background: var(--paper); }
-.proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.proof-card { min-height: 390px; padding: 32px; display: flex; flex-direction: column; background: #fbf8ed; border: 1px solid var(--ink); color: var(--ink); text-decoration: none; transition: transform .18s ease, box-shadow .18s ease; }
-.proof-card:hover { transform: translateY(-7px); box-shadow: 8px 8px 0 var(--ink); }
-.proof-number { color: var(--orange); font: 12px Consolas, monospace; }
-.proof-card h3 { margin: auto 0 16px; font-size: 31px; letter-spacing: -.04em; }
-.proof-card p { min-height: 104px; margin-bottom: 24px; color: var(--muted); line-height: 1.7; }
-.proof-card b { font-size: 12px; }
-.proof-card .stat { margin-top: 28px; color: var(--orange); font-size: clamp(64px, 7vw, 104px); line-height: 1; font-weight: 950; letter-spacing: -.08em; }
-.proof-stat { background: var(--lime); }
-.proof-stat p { color: var(--ink); }
 
 .ecosystem { background: #fbf8ed; border-top: 1px solid var(--line); }
 
@@ -592,9 +595,6 @@ footer span, footer p { margin: 0; font: 10px Consolas, monospace; letter-spacin
   .flow-card:nth-child(-n+2) { border-bottom: 1px solid var(--ink); }
   .demo { grid-template-columns: 1fr; }
   .game-stage { width: min(760px, 100%); }
-  .proof-grid { grid-template-columns: 1fr; }
-  .proof-card { min-height: 300px; }
-  .proof-card p { min-height: 0; }
   .tool-router { grid-template-columns: 1fr; }
   .router-core { min-height: 390px; }
   .game-grid { grid-template-columns: 1fr 1fr; }
@@ -627,6 +627,8 @@ footer span, footer p { margin: 0; font: 10px Consolas, monospace; letter-spacin
   .game-window { box-shadow: 10px 12px 0 var(--lime); }
   .stage-mode { top: 14px; left: 14px; }
   .stage-session { left: 14px; bottom: 14px; }
+  .stage-action { right: 14px; bottom: 14px; max-width: 178px; padding: 8px 9px; }
+  .stage-action b { font-size: 10px; }
   .game-controls { grid-template-columns: 1fr; }
   .demo-signal { min-height: 74px; }
   .final-vote { padding: 24px; grid-template-columns: 1fr; text-align: center; }
