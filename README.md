@@ -6,6 +6,8 @@
 
 本项目不建立任务中心，不创建 WorkTask 数据库，也不维护第二套任务状态机。工作事实、对话记录和成果仍由 DSH Session 与其 Workspace 保存。
 
+当前版本：`0.1.1`。本仓库发布的是 Git 源码版本；尚未声明已经发布到 npm。
+
 ## 为什么单独建仓库
 
 本仓库在 2026 年 8 月 28 日 18:00（Asia/Shanghai）之后建立，用于实现一个有明确边界的新创意。既有 AI Native Game Harness 是公开、可追溯的上游基础，不会伪装成本项目的新代码。完整边界见 [UPSTREAM_BASE.md](UPSTREAM_BASE.md)。
@@ -35,7 +37,30 @@ pnpm check
 
 在 DSH Runtime 中安装本包并应用 `cordis.patch.yml`。调用方注入 `workOrchestrator` 服务，只在陪伴角色公开回复结束后调用 `scheduleTurn()`，并传入角色资料与通知回调。
 
-AI Native Game Harness 的接线边界见 [integration/README.md](integration/README.md)，设计说明见 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)。
+最重要的时序要求是：先把陪伴角色当前回复交给用户，再调用 `scheduleTurn()`。该方法只入队后台识别并立即返回，不应阻塞当前回复。
+
+```ts
+ctx.workOrchestrator.scheduleTurn({
+  companionSessionId,
+  playerText,
+  companionReply,
+  selection,
+  source: 'voice',
+  companion: {
+    id: 'xiaotangyuan',
+    name: '小汤圆',
+  },
+  notify: update => sendWorkUpdateToClient(update),
+})
+```
+
+完整配置和调用契约见 [docs/INTEGRATION.md](docs/INTEGRATION.md)，架构与恢复行为见 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)，AI Native Game Harness 的薄接线边界见 [integration/README.md](integration/README.md)。
+
+## 验证边界
+
+`pnpm check` 当前覆盖 TypeScript 构建与 4 个本地测试：配置约束、回答后识别与同 Session 复用、重启恢复、旧小汤圆关联迁移。它不等同于真实模型、真实语音、Desktop 通知或最终 HTML 产出的端到端验证。
+
+版本变化见 [CHANGELOG.md](CHANGELOG.md)。
 
 ## License
 

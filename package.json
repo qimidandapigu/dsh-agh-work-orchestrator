@@ -1,6 +1,6 @@
 {
   "name": "@qimidandapigu/dsh-work-orchestrator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Post-turn work recognition and native Worker DSH Session orchestration for DeepSeek Harness companions.",
   "type": "module",
   "main": "./dist/index.js",
@@ -15,6 +15,9 @@
   "files": [
     "dist",
     "cordis.patch.yml",
+    "CHANGELOG.md",
+    "docs",
+    "integration",
     "README.md",
     "UPSTREAM_BASE.md"
   ],
