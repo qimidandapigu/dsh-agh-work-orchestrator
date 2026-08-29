@@ -35,36 +35,40 @@ nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
 }))
 
 const demoButton = document.querySelector('#play-demo')
-const chatRows = [...document.querySelectorAll('.chat-row')]
+const demoSignals = [...document.querySelectorAll('.demo-signal')]
 const flowCards = [...document.querySelectorAll('.flow-card')]
+const gameStage = document.querySelector('.game-stage')
 let demoTimers = []
 
 const clearDemo = () => {
   demoTimers.forEach(window.clearTimeout)
   demoTimers = []
-  chatRows.forEach(row => row.classList.remove('active'))
+  demoSignals.forEach(signal => signal.classList.remove('active'))
   flowCards.forEach(card => card.classList.remove('is-active'))
+  gameStage?.classList.remove('is-playing')
 }
 
 const runDemo = () => {
   clearDemo()
   document.querySelector('#demo').scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' })
-  demoButton.textContent = '演示播放中…'
+  demoButton.textContent = '语音与小皮鞭演示中…'
+  gameStage?.classList.add('is-playing')
 
-  chatRows.forEach((row, index) => {
+  demoSignals.forEach((signal, index) => {
     demoTimers.push(window.setTimeout(() => {
-      chatRows.forEach(item => item.classList.remove('active'))
-      row.classList.add('active')
-      const mappedCard = flowCards[Math.min(index, flowCards.length - 1)]
+      demoSignals.forEach(item => item.classList.remove('active'))
+      signal.classList.add('active')
+      const mappedCard = flowCards[[0, 1, 3][index]]
       flowCards.forEach(card => card.classList.remove('is-active'))
       mappedCard?.classList.add('is-active')
-    }, 700 + index * 1600))
+    }, 700 + index * 1800))
   })
 
   demoTimers.push(window.setTimeout(() => {
-    demoButton.textContent = '再播放一次'
+    demoButton.textContent = '再演示一次'
     flowCards.forEach(card => card.classList.remove('is-active'))
-  }, 700 + chatRows.length * 1600))
+    gameStage?.classList.remove('is-playing')
+  }, 700 + demoSignals.length * 1800))
 }
 
 demoButton.addEventListener('click', runDemo)

@@ -13,10 +13,19 @@
   <a class="skip-link" href="#main">跳到主要内容</a>
   <div class="progress-bar" aria-hidden="true"><span id="page-progress"></span></div>
 
+  <aside class="vote-strip" aria-label="参赛投票信息">
+    <div>
+      <span>投票请记住</span>
+      <strong>小组：回家玩游戏！！</strong>
+      <i aria-hidden="true">✦</i>
+      <b>参赛人员：小汤圆</b>
+    </div>
+  </aside>
+
   <header class="site-header">
     <a class="brand" href="#top" aria-label="回到首页">
       <span class="brand-mark" aria-hidden="true">↗</span>
-      <span>回家玩游戏！！</span>
+      <span class="brand-copy"><b>回家玩游戏！！</b><small>参赛人员 · 小汤圆</small></span>
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">菜单</button>
     <nav id="site-nav" aria-label="主导航">
@@ -34,15 +43,16 @@
         <p class="eyebrow"><span></span> AI NATIVE GAME HARNESS · WORK ORCHESTRATOR</p>
         <h1>别下线。<br><em>让 NPC 去上班。</em></h1>
         <p class="hero-lead">你继续种田、钓鱼、探险。小汤圆听懂你的工作要求，把耗时任务交给独立 AI 工作会话，并在游戏里主动向你汇报。</p>
+        <div class="vote-ticket" id="team">
+          <span class="vote-ticket-label">投票请记住</span>
+          <div><small>小组</small><strong>回家玩游戏！！</strong></div>
+          <div><small>参赛人员</small><b>小汤圆</b></div>
+        </div>
         <div class="hero-actions">
           <a class="button button-primary" href="#how">看它怎么工作 <span aria-hidden="true">↓</span></a>
-          <button class="button button-ghost" id="play-demo" type="button">播放 20 秒演示</button>
+          <button class="button button-ghost" id="play-demo" type="button">演示语音 + 小皮鞭</button>
         </div>
-        <dl class="hero-meta" id="team">
-          <div><dt>参赛人员</dt><dd>小汤圆</dd></div>
-          <div><dt>小组</dt><dd>回家玩游戏！！</dd></div>
-          <div><dt>版本</dt><dd>DSH · 0.1.2</dd></div>
-        </dl>
+        <p class="hero-version">DSH AGH WORK ORCHESTRATOR · VERSION 0.1.3</p>
       </div>
 
       <figure class="hero-visual reveal">
@@ -92,7 +102,7 @@
           <span class="step">01</span>
           <div class="flow-icon" aria-hidden="true">◉</div>
           <h3>边玩边说</h3>
-          <p>“小汤圆，帮我做一份游戏行业影响汇报。”</p>
+          <p>按住语音说：“小汤圆，帮我做一份游戏行业影响汇报。”</p>
           <small>VOICE INPUT</small>
         </article>
         <article class="flow-card reveal" data-step="2">
@@ -122,42 +132,28 @@
     <section class="demo section" id="demo">
       <div class="demo-copy reveal">
         <div class="section-label light">03 / 不离开游戏的工作台</div>
-        <h2>任务在后台长大，<br>对话在眼前继续。</h2>
-        <p>没有任务中心，没有进度百分比，也没有另一套工作数据库。你只需要和 NPC 说话。真实记录留在 DSH Session，最终文件留在它的 Workspace。</p>
+        <h2>任务在后台长大，<br>游戏在眼前继续。</h2>
+        <p>这里没有打字聊天框。玩家按住说话交代工作，或者挥动小皮鞭催一催；NPC 直接用游戏里的语音和头顶气泡回应。真实记录留在 DSH Session，最终文件留在它的 Workspace。</p>
         <ul class="principles">
-          <li><span>01</span> 普通聊天继续由小汤圆快速回应</li>
-          <li><span>02</span> 耗时工作进入独立 Worker Session</li>
-          <li><span>03</span> “做到哪了”读取真实 Session 记录</li>
-          <li><span>04</span> 修改意见回到原 Session，不另开任务</li>
+          <li><span>01</span> 按住说话，语音直接交代或修改工作</li>
+          <li><span>02</span> 挥动小皮鞭，发出游戏内催办动作</li>
+          <li><span>03</span> 耗时工作进入独立 Worker Session</li>
+          <li><span>04</span> NPC 用语音与头顶气泡主动汇报</li>
         </ul>
       </div>
 
-      <div class="phone reveal" aria-label="游戏内语音对话演示">
-        <div class="phone-top"><span>夏季 18 日</span><i></i><span>10:20</span></div>
-        <div class="chat-stream" id="chat-stream" aria-live="polite">
-          <div class="chat-row player active">
-            <div class="avatar">我</div>
-            <p>帮我做一份 AI 对游戏行业影响的汇报。</p>
-          </div>
-          <div class="chat-row npc">
-            <div class="avatar">汤</div>
-            <p>好，我已经安排工作会话处理。你继续钓鱼，思路整理好我就来告诉你。</p>
-          </div>
-          <div class="session-chip"><i></i><span>工作 Session · 游戏行业影响汇报</span><b>运行中</b></div>
-          <div class="chat-row npc">
-            <div class="avatar">汤</div>
-            <p>资料已整理完成，现在正在调整汇报结构，还没开始制作最终页面。</p>
-          </div>
-          <div class="chat-row player">
-            <div class="avatar">我</div>
-            <p>第二部分别讲市场规模，改成人和 AI 怎么分工。</p>
-          </div>
-          <div class="chat-row npc result">
-            <div class="avatar">汤</div>
-            <p>收到，已经发回原工作会话。最终 HTML 完成后我来叫你。</p>
-          </div>
+      <div class="game-stage reveal" aria-label="玩家在游戏里使用语音和小皮鞭催 NPC 工作的演示">
+        <div class="game-window">
+          <img src="./assets/voice-whip-demo.png" width="1675" height="942" alt="像素农场游戏中，玩家手持小皮鞭并通过麦克风询问 PPT 进度，NPC 以头顶气泡回答马上就好">
+          <span class="stage-mode">实机交互 · 语音 + 小皮鞭</span>
+          <span class="stage-session"><i></i> Worker Session 后台运行中</span>
         </div>
-        <div class="voice-bar"><span class="mic-dot"></span><b>按住说话</b><span class="wave">▂▄▆▄▂</span></div>
+        <div class="game-controls" aria-live="polite">
+          <div class="demo-signal active"><span>🎙</span><b>按住说话</b><small>“PPT 做好了没？”</small></div>
+          <div class="demo-signal"><span class="whip-symbol">〰</span><b>小皮鞭催办</b><small>游戏动作，不是打字</small></div>
+          <div class="demo-signal"><span>!</span><b>NPC 主动汇报</b><small>语音 + 头顶气泡</small></div>
+        </div>
+        <p class="game-caption">不打开聊天窗口，不暂停游戏：说一句、抽一下，NPC 自己去干活。</p>
       </div>
     </section>
 
@@ -214,9 +210,10 @@
         <a class="button button-primary" href="https://github.com/qimidandapigu/dsh-agh-work-orchestrator" target="_blank" rel="noreferrer">查看开源项目 ↗</a>
         <a class="button button-ghost light-button" href="#top">回到开头 ↑</a>
       </div>
-      <div class="team-stamp">
-        <span>参赛人员 / 小汤圆</span>
-        <span>小组 / 回家玩游戏！！</span>
+      <div class="final-vote">
+        <span>投票请记住</span>
+        <strong>回家玩游戏！！</strong>
+        <b>参赛人员：小汤圆</b>
       </div>
     </section>
   </main>
