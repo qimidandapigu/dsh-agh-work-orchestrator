@@ -1,8 +1,10 @@
-# 小汤圆 Work Session
+# DSH AGH Work Orchestrator
 
-小汤圆 Work Session 是一层很薄的 DSH Session 协调能力。小汤圆先完成当前对话回复；回复结束后，后台识别器才判断玩家是否提出了需要长期处理的通用工作。命中后，系统创建或继续一个独立 Worker DSH Session，并把公开更新转回小汤圆。
+`dsh-agh-work-orchestrator` 是从 AI Native Game Harness（AGH）中独立出来的通用 DSH 工作编排插件。它让陪伴角色先完成当前对话回复；回复结束后，后台识别器再判断用户是否提出了需要长期处理的通用工作。命中后，插件创建或恢复一个独立 Worker DSH Session，并把公开更新交回原陪伴 Session。
 
-这个项目不建立任务中心，不创建 WorkTask 数据库，也不维护第二套任务状态机。工作事实、对话记录和成果仍由 DSH Session 与其 Workspace 保存。
+`AGH` 是 `AI Native Game Harness` 的缩写。GitHub 仓库使用 AGH 品牌名，运行时包名保持为 `@qimidandapigu/dsh-work-orchestrator`，便于其他角色和产品复用。
+
+本项目不建立任务中心，不创建 WorkTask 数据库，也不维护第二套任务状态机。工作事实、对话记录和成果仍由 DSH Session 与其 Workspace 保存。
 
 ## 为什么单独建仓库
 
@@ -10,12 +12,15 @@
 
 ## 当前已经实现
 
-- 小汤圆回答完成后再做工作意图识别，不阻塞首字和语音回复。
+- 陪伴角色回答完成后再做工作意图识别，不阻塞首字和语音回复。
 - `start`、`continue`、`inspect` 与保守的 `none` 四类意图。
-- 一个小汤圆 Session 关联并复用同一个 Worker DSH Session。
-- Worker 的公开回复回传给小汤圆，再由小汤圆以自己的身份汇报。
+- 一个陪伴 Session 关联并复用同一个 Worker DSH Session。
+- 只持久化 Session 关联，不保存第二份任务内容或状态。
+- 重启后恢复原 Worker Session；恢复失败时保留关联并明确报告，不静默新建任务。
+- Worker 的公开回复回传给原陪伴 Session，再由调用方配置的角色身份汇报。
+- 兼容旧的 `xiaotangyuan-work-*` Session 与关联文件。
 - 关闭服务时等待后台识别任务并释放 Worker Session。
-- 单元测试覆盖输入约束、回答后识别、独立 Session 创建和后续复用。
+- 通过 Cordis patch 作为独立 DSH 插件安装。
 
 ## 本地验证
 
@@ -26,12 +31,11 @@ pnpm install --frozen-lockfile
 pnpm check
 ```
 
-## 下一步
+## 接入方式
 
-1. 把 Session 关联从进程内 Map 改为最小持久映射，仍不保存任务状态。
-2. 监听 Worker DSH Session 的公开事件，不依赖一轮执行同步结束。
-3. 增加 Mock Worker 端到端验证：小汤圆持续聊天、修改复用原 Session、查询真实进度、最终生成 HTML。
-4. 提供 AI Native Game Harness 的薄集成补丁与独立 Demo。
+在 DSH Runtime 中安装本包并应用 `cordis.patch.yml`。调用方注入 `workOrchestrator` 服务，只在陪伴角色公开回复结束后调用 `scheduleTurn()`，并传入角色资料与通知回调。
+
+AI Native Game Harness 的接线边界见 [integration/README.md](integration/README.md)，设计说明见 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)。
 
 ## License
 

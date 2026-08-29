@@ -1,8 +1,7 @@
 {
-  "name": "@qimidandapigu/xiaotangyuan-work-session",
+  "name": "@qimidandapigu/dsh-work-orchestrator",
   "version": "0.1.0",
-  "private": true,
-  "description": "Post-reply work routing and persistent Worker DSH Session coordination for XiaoTangYuan.",
+  "description": "Post-turn work recognition and native Worker DSH Session orchestration for DeepSeek Harness companions.",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -10,10 +9,12 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "files": [
     "dist",
+    "cordis.patch.yml",
     "README.md",
     "UPSTREAM_BASE.md"
   ],
@@ -25,6 +26,26 @@
   },
   "engines": {
     "node": ">=22.19"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh-plugin",
+    "work-orchestrator",
+    "worker-session",
+    "companion",
+    "ai-native-game-harness"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qimidandapigu/dsh-agh-work-orchestrator.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
   },
   "peerDependencies": {
     "@deepseek-ai/cordis": "^4.0.1",
