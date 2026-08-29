@@ -6,7 +6,24 @@
 
 本项目不建立任务中心，不创建 WorkTask 数据库，也不维护第二套任务状态机。工作事实、对话记录和成果仍由 DSH Session 与其 Workspace 保存。
 
-当前版本：`0.1.1`。本仓库发布的是 Git 源码版本；尚未声明已经发布到 npm。
+当前版本：`0.1.2`。本仓库发布的是 Git 源码版本；尚未声明已经发布到 npm。
+
+## 产品宣传页
+
+![玩家在游戏里通过语音催 NPC 完成 PPT](site/assets/npc-work-hero.png)
+
+- 参赛人员：**小汤圆**
+- 小组：**回家玩游戏！！**
+
+我们相信，未来的人不该被工作界面困住。玩家继续玩游戏，通过语音向 NPC 说明目标；NPC 连接 AI 与办公工具，在独立 Worker DSH Session 中持续完成工作、主动汇报，并把最终成果保存在 Workspace。
+
+直接打开 [site/index.html](site/index.html) 查看完整中文产品宣传页。本地预览：
+
+```powershell
+python -m http.server 4173 --directory site
+```
+
+产品定位、用户旅程和事实依据见 [docs/PRODUCT_VISION.md](docs/PRODUCT_VISION.md)。
 
 ## 为什么单独建仓库
 

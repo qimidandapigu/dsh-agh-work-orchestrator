@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="回家玩游戏！！小组作品：让游戏 NPC 连接 AI 与办公工具，玩家边玩边指挥，NPC 在独立工作 Session 中完成任务并主动汇报。">
+  <meta name="theme-color" content="#101a19">
+  <title>回家玩游戏！！｜让 NPC 去上班</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <div class="progress-bar" aria-hidden="true"><span id="page-progress"></span></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="回到首页">
+      <span class="brand-mark" aria-hidden="true">↗</span>
+      <span>回家玩游戏！！</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">菜单</button>
+    <nav id="site-nav" aria-label="主导航">
+      <a href="#vision">愿景</a>
+      <a href="#how">怎么工作</a>
+      <a href="#proof">依据</a>
+      <a href="#team">参赛信息</a>
+      <a class="nav-cta" href="https://github.com/qimidandapigu/dsh-agh-work-orchestrator" target="_blank" rel="noreferrer">GitHub ↗</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span></span> AI NATIVE GAME HARNESS · WORK ORCHESTRATOR</p>
+        <h1>别下线。<br><em>让 NPC 去上班。</em></h1>
+        <p class="hero-lead">你继续种田、钓鱼、探险。小汤圆听懂你的工作要求，把耗时任务交给独立 AI 工作会话，并在游戏里主动向你汇报。</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#how">看它怎么工作 <span aria-hidden="true">↓</span></a>
+          <button class="button button-ghost" id="play-demo" type="button">播放 20 秒演示</button>
+        </div>
+        <dl class="hero-meta" id="team">
+          <div><dt>参赛人员</dt><dd>小汤圆</dd></div>
+          <div><dt>小组</dt><dd>回家玩游戏！！</dd></div>
+          <div><dt>版本</dt><dd>DSH · 0.1.2</dd></div>
+        </dl>
+      </div>
+
+      <figure class="hero-visual reveal">
+        <div class="image-frame">
+          <img src="./assets/npc-work-hero.png" width="1675" height="942" alt="像素农场游戏中，玩家通过语音询问 PPT 进度，NPC 抱着文档回答马上就好">
+          <span class="live-pill"><i></i> 游戏内实时协作</span>
+          <span class="image-note">语音 + 小皮鞭，催 NPC 干活</span>
+        </div>
+        <figcaption>产品概念演示画面 · 玩家不离开游戏，也能持续指挥工作</figcaption>
+      </figure>
+    </section>
+
+    <div class="ticker" aria-label="产品能力概览">
+      <div class="ticker-track">
+        <span>你负责玩</span><i>✦</i><span>NPC 负责干活</span><i>✦</i><span>语音随时修改</span><i>✦</i><span>Session 持续记住</span><i>✦</i><span>成果落进 Workspace</span><i>✦</i>
+        <span aria-hidden="true">你负责玩</span><i aria-hidden="true">✦</i><span aria-hidden="true">NPC 负责干活</span><i aria-hidden="true">✦</i><span aria-hidden="true">语音随时修改</span><i aria-hidden="true">✦</i><span aria-hidden="true">Session 持续记住</span><i aria-hidden="true">✦</i><span aria-hidden="true">成果落进 Workspace</span><i aria-hidden="true">✦</i>
+      </div>
+    </div>
+
+    <section class="manifesto section" id="vision">
+      <div class="section-label reveal">01 / 我们相信</div>
+      <div class="manifesto-grid">
+        <h2 class="reveal">未来的人，<br>不该被工作界面困住。</h2>
+        <div class="manifesto-copy reveal">
+          <p class="big-copy">生产力会越来越膨胀。人要做的，不再是亲自守着每一个进度条，而是提出目标、判断方向、享受更多娱乐与文化产品。</p>
+          <p>可今天的 AI 仍把人拽回聊天框、文档和任务面板。我们的答案很直接：<strong>把 AI 和办公工具接进游戏 NPC。</strong></p>
+          <p>玩家用最自然的语音交代工作；NPC 先陪你聊，再在后台识别任务、派出独立 Worker Session。你继续玩，它持续做；有结果，它主动来报。</p>
+        </div>
+      </div>
+      <blockquote class="quote reveal">
+        <span>“</span>
+        <p>不是把游戏变成办公室，<br>而是让办公室退到游戏背后。</p>
+      </blockquote>
+    </section>
+
+    <section class="how section" id="how">
+      <div class="section-heading reveal">
+        <div>
+          <div class="section-label">02 / 一句话发起工作</div>
+          <h2>小汤圆先回应，<br>AI 再去忙。</h2>
+        </div>
+        <p>工作识别发生在 NPC 回答之后。语音不会被长任务卡住，游戏也不用暂停。</p>
+      </div>
+
+      <div class="flow" aria-label="产品工作流程">
+        <article class="flow-card reveal" data-step="1">
+          <span class="step">01</span>
+          <div class="flow-icon" aria-hidden="true">◉</div>
+          <h3>边玩边说</h3>
+          <p>“小汤圆，帮我做一份游戏行业影响汇报。”</p>
+          <small>VOICE INPUT</small>
+        </article>
+        <article class="flow-card reveal" data-step="2">
+          <span class="step">02</span>
+          <div class="flow-icon" aria-hidden="true">↯</div>
+          <h3>立即接住</h3>
+          <p>小汤圆先正常回答：“好，交给我。你继续玩。”</p>
+          <small>FAST REPLY</small>
+        </article>
+        <article class="flow-card reveal" data-step="3">
+          <span class="step">03</span>
+          <div class="flow-icon" aria-hidden="true">∞</div>
+          <h3>独立开工</h3>
+          <p>后台 Worker DSH Session 调用研究、写作和办公工具。</p>
+          <small>DURABLE SESSION</small>
+        </article>
+        <article class="flow-card reveal" data-step="4">
+          <span class="step">04</span>
+          <div class="flow-icon" aria-hidden="true">✓</div>
+          <h3>主动汇报</h3>
+          <p>思路、进度和成果回到游戏。你随时语音纠正，仍然进入同一 Session。</p>
+          <small>REPORT & ITERATE</small>
+        </article>
+      </div>
+    </section>
+
+    <section class="demo section" id="demo">
+      <div class="demo-copy reveal">
+        <div class="section-label light">03 / 不离开游戏的工作台</div>
+        <h2>任务在后台长大，<br>对话在眼前继续。</h2>
+        <p>没有任务中心，没有进度百分比，也没有另一套工作数据库。你只需要和 NPC 说话。真实记录留在 DSH Session，最终文件留在它的 Workspace。</p>
+        <ul class="principles">
+          <li><span>01</span> 普通聊天继续由小汤圆快速回应</li>
+          <li><span>02</span> 耗时工作进入独立 Worker Session</li>
+          <li><span>03</span> “做到哪了”读取真实 Session 记录</li>
+          <li><span>04</span> 修改意见回到原 Session，不另开任务</li>
+        </ul>
+      </div>
+
+      <div class="phone reveal" aria-label="游戏内语音对话演示">
+        <div class="phone-top"><span>夏季 18 日</span><i></i><span>10:20</span></div>
+        <div class="chat-stream" id="chat-stream" aria-live="polite">
+          <div class="chat-row player active">
+            <div class="avatar">我</div>
+            <p>帮我做一份 AI 对游戏行业影响的汇报。</p>
+          </div>
+          <div class="chat-row npc">
+            <div class="avatar">汤</div>
+            <p>好，我已经安排工作会话处理。你继续钓鱼，思路整理好我就来告诉你。</p>
+          </div>
+          <div class="session-chip"><i></i><span>工作 Session · 游戏行业影响汇报</span><b>运行中</b></div>
+          <div class="chat-row npc">
+            <div class="avatar">汤</div>
+            <p>资料已整理完成，现在正在调整汇报结构，还没开始制作最终页面。</p>
+          </div>
+          <div class="chat-row player">
+            <div class="avatar">我</div>
+            <p>第二部分别讲市场规模，改成人和 AI 怎么分工。</p>
+          </div>
+          <div class="chat-row npc result">
+            <div class="avatar">汤</div>
+            <p>收到，已经发回原工作会话。最终 HTML 完成后我来叫你。</p>
+          </div>
+        </div>
+        <div class="voice-bar"><span class="mic-dot"></span><b>按住说话</b><span class="wave">▂▄▆▄▂</span></div>
+      </div>
+    </section>
+
+    <section class="proof section" id="proof">
+      <div class="section-heading reveal">
+        <div>
+          <div class="section-label">04 / 不是空想，底座已经存在</div>
+          <h2>把成熟能力，<br>串成新的生活方式。</h2>
+        </div>
+        <p>我们的创新不是再造一套任务系统，而是把 DSH 已有的持久 Session、Workspace 与 Agent 能力连接进游戏体验。</p>
+      </div>
+
+      <div class="proof-grid">
+        <a class="proof-card reveal" href="https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/session/README.md" target="_blank" rel="noreferrer">
+          <span class="proof-number">01</span>
+          <h3>Session 可持续</h3>
+          <p>DSH 官方把 Session 定义为可持久、可恢复的数据平面。工作对话离开当前实时循环后仍能继续。</p>
+          <b>查看 DSH Session 文档 ↗</b>
+        </a>
+        <a class="proof-card reveal" href="https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/client/ui-workspace/README.md" target="_blank" rel="noreferrer">
+          <span class="proof-number">02</span>
+          <h3>成果有地方落</h3>
+          <p>Workspace 与 Session 列表已是 DSH 产品能力。玩家想看完整记录时，可以直接打开对应工作会话。</p>
+          <b>查看 Workspace UI 文档 ↗</b>
+        </a>
+        <a class="proof-card proof-stat reveal" href="https://www.nber.org/papers/w31161" target="_blank" rel="noreferrer">
+          <span class="stat">+14%</span>
+          <h3>AI 协作确实能提升产出</h3>
+          <p>NBER 对 5,179 名客服人员的研究中，生成式 AI 助手使每小时解决问题数平均提高 14%。这是特定场景证据，不代表所有职业。</p>
+          <b>查看原始研究 ↗</b>
+        </a>
+      </div>
+    </section>
+
+    <section class="not-list section">
+      <div class="section-label reveal">05 / 我们刻意没有做</div>
+      <div class="not-grid">
+        <h2 class="reveal">薄薄一层协调，<br>不造第二个世界。</h2>
+        <div class="cross-list reveal">
+          <span><i>×</i> WorkTask 数据库</span>
+          <span><i>×</i> 独立任务中心</span>
+          <span><i>×</i> 进度百分比表演</span>
+          <span><i>×</i> 新的 Subagent 管理系统</span>
+          <span><i>×</i> 把游戏变成办公软件</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta section">
+      <div class="cta-pixel" aria-hidden="true">☻</div>
+      <p>参赛作品 · DSH AGH WORK ORCHESTRATOR</p>
+      <h2>你负责决定人生怎么玩。<br><em>剩下的，让 AI 去忙。</em></h2>
+      <div class="hero-actions centered">
+        <a class="button button-primary" href="https://github.com/qimidandapigu/dsh-agh-work-orchestrator" target="_blank" rel="noreferrer">查看开源项目 ↗</a>
+        <a class="button button-ghost light-button" href="#top">回到开头 ↑</a>
+      </div>
+      <div class="team-stamp">
+        <span>参赛人员 / 小汤圆</span>
+        <span>小组 / 回家玩游戏！！</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div><b>回家玩游戏！！</b><span>NPC WORKS · HUMAN PLAYS</span></div>
+    <p>产品原型与概念页面 · 2026</p>
+  </footer>
+</body>
+</html>
