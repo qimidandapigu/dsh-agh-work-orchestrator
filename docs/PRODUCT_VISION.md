@@ -37,11 +37,22 @@
 
 本项目不创建 WorkTask 数据库、任务中心、进度百分比或第二套任务状态机。DSH Session 是工作记录的事实来源，Workspace 是成果来源。
 
+## 生产力工具生态
+
+Worker Session 会根据任务使用运行环境中已安装并向它暴露的工具。DeepSeek Harness 是持久会话和编排底座；其官方 subagent 能力包含真实 Codex app-server Provider 与通过官方 Claude Agent SDK 运行的 Claude Code Provider。两者都需要部署方单独完成安装、认证、权限配置和启用，Work Orchestrator 不会替它们伪造登录或静默降级。
+
+需求中提到的 `Workbode` 暂作为开放扩展位保留。当前联网检索没有找到可核验的官方产品或协议，因此本仓库不宣称已经接入；确认准确产品名称和接口后，可以按相同 Provider/Tool 边界补充。
+
+## 多游戏边界
+
+Work Orchestrator 不依赖某个 NPC 名称或某款游戏。星露谷物语、缺氧、饥荒联机版等游戏分别通过自己的 AGH Game Adapter 提交语音/动作事件并接收通知，后台编排逻辑复用。新增一款游戏仍然需要实现和验证该游戏的 Adapter；“支持多游戏”不表示任意游戏可以零配置自动接入。
+
 ## 联网资料依据
 
 - [DeepSeek Harness Session 数据平面](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/session/README.md)：官方说明 Session 对话可持久化，并在恢复时重放事件日志。
 - [DeepSeek Harness Python SDK 指南](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/user/guide/python-sdk.md)：官方建议独立工作使用新 Session ID，继续同一上下文时复用原 ID。
 - [DeepSeek Harness Workspace UI](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/client/ui-workspace/README.md)：官方客户端已支持在侧栏浏览和管理 Workspace 与 Session。
+- [DeepSeek Harness Subagent 能力族](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/subagent/README.md)：官方列出 Codex 与 Claude Code Provider，可以把独立任务交给真实外部产品执行。
 - [NBER Working Paper 31161: Generative AI at Work](https://www.nber.org/papers/w31161)：对 5,179 名客服人员的研究显示，AI 助手使每小时解决问题数平均提高 14%。该结果来自特定企业和工作场景，只用于说明人机协作可能提高产出，不代表所有职业或本产品已经达到相同效果。
 
 ## 当前验证边界
